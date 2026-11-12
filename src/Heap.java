@@ -44,6 +44,15 @@ public class Heap {
         return heapArray.getLast();
     }
 
+    public int size(){
+        return heapArray.size();
+    }
+
+    public boolean isEmpty(){
+        if(!heapArray.isEmpty()) return false;
+        return true;
+    }
+
     private void bubbleUp(int postion){
         int parent = ((postion-1)/2);
         if(postion==0||heapArray.get(parent)<heapArray.get(postion)) return;
