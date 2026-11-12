@@ -69,21 +69,28 @@ public class Heap {
         
     }
 
-    private void bubbleDown(int postion){
+        private void bubbleDown(int postion){
         int childLeft= postion*2+1;
         int childRight= postion*2+2;
-        if(childLeft>heapArray.size()-1||childRight>heapArray.size()-1)return;
+        if(childRight>heapArray.size()-1){
+            if(heapArray.get(childLeft)>heapArray.get(postion)){
+                bubbleDownSwap(postion, childLeft);
+            }
+
+            return;
+        }
 
         if(heapArray.get(postion)>heapArray.get(childLeft)&&heapArray.get(postion)>heapArray.get(childRight)) return;
 
-        if(childLeft<postion){
+        if(heapArray.get(childLeft)>heapArray.get(postion)&&heapArray.get(childLeft)>=heapArray.get(childRight)){
             bubbleDownSwap(postion, childLeft);
             postion= childLeft;
         }
-        else if(childRight<postion){
-            bubbleDownSwap(postion, childLeft);
+        else if(heapArray.get(childRight)>heapArray.get(postion)){
+            bubbleDownSwap(postion, childRight);
             postion=childRight;
         }
+        else return;
         bubbleDown(postion);
         
     }
