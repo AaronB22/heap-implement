@@ -31,5 +31,8 @@ public class Heap {
     public void add(int x){
         heapArray.add(x);
     }
+    public int pop(){
+        return heapArray.removeLast();
+    }
     
 }
