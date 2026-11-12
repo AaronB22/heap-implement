@@ -37,5 +37,18 @@ public class Heap {
     public int peak(){
         return heapArray.getLast();
     }
+
+    private void bubbleUp(int postion){
+        if(postion==0) return;
+        int parent = ((postion-1)/2);
+        if(heapArray.get(parent)>heapArray.get(postion)){
+            int tempParent= heapArray.get(parent);
+            heapArray.set(parent, heapArray.get(postion));
+            heapArray.set(postion, tempParent);
+            postion=parent;
+        }
+        bubbleUp(postion);
+        
+    }
     
 }
