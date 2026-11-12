@@ -35,6 +35,7 @@ public class Heap {
 
     public void add(int x){
         heapArray.add(x);
+        bubbleUp(heapArray.indexOf(x));
     }
     public int pop(){
         return heapArray.removeLast();
@@ -44,8 +45,8 @@ public class Heap {
     }
 
     private void bubbleUp(int postion){
-        if(postion==0) return;
         int parent = ((postion-1)/2);
+        if(postion==0||heapArray.get(parent)<heapArray.get(postion)) return;
         if(heapArray.get(parent)>heapArray.get(postion)){
             int tempParent= heapArray.get(parent);
             heapArray.set(parent, heapArray.get(postion));
