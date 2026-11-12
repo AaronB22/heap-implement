@@ -38,10 +38,12 @@ public class Heap {
         bubbleUp(heapArray.indexOf(x));
     }
     public int pop(){
-        return heapArray.removeLast();
+       int currHead= heapArray.getFirst();
+        heapArray.set(0, heapArray.getLast());
+       return currHead;
     }
     public int peak(){
-        return heapArray.getLast();
+        return heapArray.getFirst();
     }
 
     public int size(){
