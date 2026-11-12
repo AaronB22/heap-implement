@@ -26,7 +26,12 @@ import java.util.List;
  *  - hold private instance variables
  */
 public class Heap {
-    private final List<Integer> heapArray= new ArrayList<>();
+    private final List<Integer> heapArray;
+
+    public Heap(){
+        this.heapArray= new ArrayList<>();
+    }
+
 
     public void add(int x){
         heapArray.add(x);
