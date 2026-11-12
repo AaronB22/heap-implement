@@ -40,6 +40,7 @@ public class Heap {
     public int pop(){
        int currHead= heapArray.getFirst();
         heapArray.set(0, heapArray.getLast());
+        bubbleDown(0);
        return currHead;
     }
     public int peak(){
@@ -66,6 +67,30 @@ public class Heap {
         }
         bubbleUp(postion);
         
+    }
+
+    private void bubbleDown(int postion){
+        int childLeft= postion*2+1;
+        int childRight= postion*2+2;
+        if(childLeft>heapArray.size()-1||childRight>heapArray.size()-1)return;
+
+        if(heapArray.get(postion)>heapArray.get(childLeft)&&heapArray.get(postion)>heapArray.get(childRight)) return;
+
+        if(childLeft<postion){
+            bubbleDownSwap(postion, childLeft);
+            postion= childLeft;
+        }
+        else if(childRight<postion){
+            bubbleDownSwap(postion, childLeft);
+            postion=childRight;
+        }
+        bubbleDown(postion);
+        
+    }
+    private void bubbleDownSwap(int postion, int child){
+        int tempChild= heapArray.get(child);
+        heapArray.set(child, heapArray.get(postion));
+        heapArray.set(postion, tempChild);
     }
     
 }
